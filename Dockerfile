@@ -30,3 +30,4 @@ RUN echo "Run final processing..." \
     && apt autoremove -qq \
     && echo "done." \
     && echo "Finish!"
+CMD [ "/home/init.sh" ]
