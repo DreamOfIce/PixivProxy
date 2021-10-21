@@ -19,10 +19,10 @@ echo "Please abide by the use agreement of relevant service providers!"
 printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s" $pixivDomain $pximgDomain
 
 echo "Replace the domain..."
-sed -i 's/@PIXIV_DOMAIN@/${pixivDomain}/g' /etc/nginx/nginx.conf
-sed -i 's/@PIXIV_DOMAIN2@/${pixiivDomain2}/g' /etc/nginx/nginx.conf
-sed -i 's/@PXIMG_DOMAIN@/${pximgDomain}/g' /etc/nginx/nginx.conf
-sed -i 's/@PXIMG_DOMAIN2@/${pximgDomain2}/g' /etc/nginx/nginx.conf
+sed -i "s/@PIXIV_DOMAIN@/${pixivDomain}/g" /etc/nginx/nginx.conf
+sed -i "s/@PIXIV_DOMAIN2@/${pixiivDomain2}/g" /etc/nginx/nginx.conf
+sed -i "s/@PXIMG_DOMAIN@/${pximgDomain}/g" /etc/nginx/nginx.conf
+sed -i "s/@PXIMG_DOMAIN2@/${pximgDomain2}/g" /etc/nginx/nginx.conf
 echo "Done."
 echo "Test nginx config..."
 nginx -t
