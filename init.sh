@@ -24,13 +24,26 @@ sed -i 's/@PIXIV_DOMAIN2@/${pixiivDomain2}/g' /etc/nginx/nginx.conf
 sed -i 's/@PXIMG_DOMAIN@/${pximgDomain}/g' /etc/nginx/nginx.conf
 sed -i 's/@PXIMG_DOMAIN2@/${pximgDomain2}/g' /etc/nginx/nginx.conf
 echo "Done."
+echo "Test nginx config..."
+nginx -t
+if [ $? = 0 ]
+then
+    echo "Success!"
+else
+    echo "Fail!"
+    echo "[ERR]Nginx.conf test fail,please check the config!"
+    echo -e "Output the nginx.conf...\n\n"
+    cat /etc/nginx/nginx.conf
+    echo -e "\n\nIs the configuration correct?"
+    exit 1
+fi
 echo "Start nginx..."
 service nginx start
-if [ $? != 0 ]
+if [ $? = 0 ]
 then
+    exit 0
+else
     echo "[ERR]Start nginx failed!"
     echo "[INFO]Please check your setting!"
     exit 1
-else
-        exit 0
 fi
