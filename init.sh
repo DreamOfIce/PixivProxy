@@ -4,7 +4,7 @@
 pixivDomain=$PIXIV_DOMAIN
 pximgDomain=$PXIMG_DOMAIN
 port=$PORT
-if [ -z "$pixivDomain" -o -z "$pximgDomain" -o "$port" ]
+if [ -z "$pixivDomain" -o -z "$pximgDomain" -o -z "$port" ]
 then
     echo "[ERR]Cannot read the env!Have you set them?"
     exit 1
