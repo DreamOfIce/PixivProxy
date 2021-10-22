@@ -3,6 +3,7 @@
 
 pixivDomain=$PIXIV_DOMAIN
 pximgDomain=$PXIMG_DOMAIN
+port=$PORT
 if [ -z "$pixivDomain" -o -z "$pximgDomain" ]
 then
     echo "[ERR]Cannot read the env!Have you set them?"
@@ -13,16 +14,20 @@ pixivDomain2=${pixivDomain//'.'/'\.'}
 pximgDomain2=${pximgDomain//'.'/'\.'}
 
 echo "Pixiv Proxy"
+echo "Author:Creeper2077"
 echo "Github: https://github.com/Creeper2077/pixiv-proxy-cn"
 echo " Using GPL3.0 License"
 echo "Please abide by the use agreement of relevant service providers!"
 printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s" $pixivDomain $pximgDomain
-
+printf "The program will run on port %s" $port
 echo "Replace the domain..."
 sed -i "s/@PIXIV_DOMAIN@/${pixivDomain}/g" /etc/nginx/nginx.conf
 sed -i "s/@PIXIV_DOMAIN2@/${pixiivDomain2}/g" /etc/nginx/nginx.conf
 sed -i "s/@PXIMG_DOMAIN@/${pximgDomain}/g" /etc/nginx/nginx.conf
 sed -i "s/@PXIMG_DOMAIN2@/${pximgDomain2}/g" /etc/nginx/nginx.conf
+echo "Done."
+echo "Replace the port..."
+sed -i "s/@PORT@/${port}/g" /etc/nginx/nginx.conf
 echo "Done."
 echo "Test nginx config..."
 nginx -t
@@ -37,6 +42,15 @@ else
     echo -e "\n\nIs the configuration correct?"
     exit 1
 fi
+echo -e "Please add the records below to your DNS provider \n"
+echo "${pixivDomain}.	1	IN	CNAME	www.${pixivDomain}."
+echo "www.${pixivDomain}.	1	IN	CNAME	appname-username.koyeb.app."
+echo "accounts.${pixivDomain}.	1	IN	CNAME	appname-username.koyeb.app."
+echo "source.${pixivDomain}.	1	IN	CNAME	appname-username.koyeb.app."
+echo "imp.${pixivDomain}.	1	IN	CNAME	appname-username.koyeb.app."
+echo "i.${pximgDomain}.	1	IN	CNAME	appname-username.koyeb.app."
+echo "s.${pximgDomain}.	1	IN	CNAME	appname-username.koyeb.app."
+echo -e "pixiv.${pximgDomain}.	1	IN	CNAME	appname-username.koyeb.app.\n"
 echo "Start nginx..."
 service nginx start
 if [ $? = 0 ]
