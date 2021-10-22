@@ -9,14 +9,8 @@ RUN echo "Pixiv Proxy" \
     && echo "===============================" \
     && echo "Start building image." \
     && echo "Update source..." \
-    && if [ ${ARCHIVE_SOURCE} != 'default' ] \
-    then \
-    sed -i "s/archive.ubuntu.com/${ARCHIVE_SOURCE}/g" /etc/apt/sources.list \
-    fi \
-    && if[${SECURITY_SOURCE} != 'default'] \
-    then \
-    sed -i "s/security.ubuntu.com/${SECURITY_SOURCE}/g" /etc/apt/sources.list \
-    fi \
+    && if [ ${ARCHIVE_SOURCE} != 'default' ]; then sed -i "s/archive.ubuntu.com/${ARCHIVE_SOURCE}/g" /etc/apt/sources.list; fi \
+    && if[ ${SECURITY_SOURCE} != 'default' ]; then sed -i "s/security.ubuntu.com/${SECURITY_SOURCE}/g" /etc/apt/sources.list; fi \
     && apt update -qq \
     && apt upgrade -y -qq \
     && echo "Done." \
