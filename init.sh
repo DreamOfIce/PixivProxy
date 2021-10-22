@@ -4,10 +4,9 @@
 pixivDomain=$PIXIV_DOMAIN
 pximgDomain=$PXIMG_DOMAIN
 port=$PORT
-if [ -z "$pixivDomain" -o -z "$pximgDomain" ]
+if [ -z "$pixivDomain" -o -z "$pximgDomain" -o "$port" ]
 then
     echo "[ERR]Cannot read the env!Have you set them?"
-    echo "[INFO]For more Information,visit https://"
     exit 1
 fi
 pixivDomain2='~^([^.]+)'${pixivDomain//'.'/'\.'}
@@ -18,7 +17,7 @@ echo "Author:Creeper2077"
 echo "Github: https://github.com/Creeper2077/pixiv-proxy-cn"
 echo "Using GPL3.0 License"
 echo "Please abide by the use agreement of relevant service providers!"
-printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s" $pixivDomain $pximgDomain
+printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s\n" $pixivDomain $pximgDomain
 printf "The program will run on port %s\n" $port
 echo "Replace the domain..."
 sed -i "s/@PIXIV_DOMAIN@/${pixivDomain}/g" /etc/nginx/nginx.conf
@@ -44,20 +43,22 @@ else
 fi
 echo -e "Please add the records below to your DNS provider \n"
 echo "${pixivDomain}.	1	IN	CNAME	www.${pixivDomain}."
-echo "www.${pixivDomain}.	1	IN	CNAME	appname-username.koyeb.app."
-echo "accounts.${pixivDomain}.	1	IN	CNAME	appname-username.koyeb.app."
-echo "source.${pixivDomain}.	1	IN	CNAME	appname-username.koyeb.app."
-echo "imp.${pixivDomain}.	1	IN	CNAME	appname-username.koyeb.app."
-echo "i.${pximgDomain}.	1	IN	CNAME	appname-username.koyeb.app."
-echo "s.${pximgDomain}.	1	IN	CNAME	appname-username.koyeb.app."
-echo -e "pixiv.${pximgDomain}.	1	IN	CNAME	appname-username.koyeb.app.\n"
+echo "www.${pixivDomain}.	1	IN	CNAME	your.container.domain."
+echo "accounts.${pixivDomain}.	1	IN	CNAME	your.container.domain."
+echo "source.${pixivDomain}.	1	IN	CNAME	your.container.domain."
+echo "imp.${pixivDomain}.	1	IN	CNAME	your.container.domain."
+echo "i.${pximgDomain}.	1	IN	CNAME	your.container.domain."
+echo "s.${pximgDomain}.	1	IN	CNAME	your.container.domain."
+echo -e "pixiv.${pximgDomain}.	1	IN	CNAME	your.container.domain.\n"
 echo "Start nginx..."
 service nginx start
-if [ $? = 0 ]
+if [ $? != 0 ]
 then
-    exit 0
-else
     echo "[ERR]Start nginx failed!"
     echo "[INFO]Please check your setting!"
     exit 1
 fi
+echo "Done."
+echo -e "Start etching nginx logs..\n"
+tail -f -n 20 /etc/nginx/logs/access.log
+exit 0
