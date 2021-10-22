@@ -10,16 +10,16 @@ then
     echo "[INFO]For more Information,visit https://"
     exit 1
 fi
-pixivDomain2=${pixivDomain//'.'/'\.'}
-pximgDomain2=${pximgDomain//'.'/'\.'}
+pixivDomain2='~^([^.]+)'${pixivDomain//'.'/'\.'}
+pximgDomain2='~^([^.]+)'${pximgDomain//'.'/'\.'}
 
 echo "Pixiv Proxy"
 echo "Author:Creeper2077"
 echo "Github: https://github.com/Creeper2077/pixiv-proxy-cn"
-echo " Using GPL3.0 License"
+echo "Using GPL3.0 License"
 echo "Please abide by the use agreement of relevant service providers!"
 printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s" $pixivDomain $pximgDomain
-printf "The program will run on port %s" $port
+printf "The program will run on port %s\n" $port
 echo "Replace the domain..."
 sed -i "s/@PIXIV_DOMAIN@/${pixivDomain}/g" /etc/nginx/nginx.conf
 sed -i "s/@PIXIV_DOMAIN2@/${pixiivDomain2}/g" /etc/nginx/nginx.conf
