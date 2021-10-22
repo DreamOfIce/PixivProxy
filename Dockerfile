@@ -27,7 +27,6 @@ RUN echo "Pixiv Proxy" \
 COPY nginx.conf /etc/nginx
 COPY init.sh /home
 RUN echo "Run final processing..." \
-    && nginx -t \
     && chmod +x /home/init.sh \
     && apt clean -qq \
     && apt autoremove -qq \
