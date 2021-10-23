@@ -67,3 +67,4 @@ fi
 echo "Done."
 echo -e "Start fetching nginx access logs...\n"
 tail -f -n 20 /var/log/nginx/access.log
+exit 0
