@@ -4,10 +4,14 @@
 pixivDomain=$PIXIV_DOMAIN
 pximgDomain=$PXIMG_DOMAIN
 port=$PORT
-if [ -z "$pixivDomain" -o -z "$pximgDomain" -o -z "$port" ]
+if [ -z "$pixivDomain" -o -z "$pximgDomain" ]
 then
     echo "[ERR]Cannot read the env!Have you set them?"
     exit 1
+fi
+if [ -z "$port" ]
+then
+    port=8080
 fi
 pixivDomain2='~^([^.]+)\\.'${pixivDomain//'.'/'\\.'}'$'
 pximgDomain2='~^([^.]+)\\.'${pximgDomain//'.'/'\\.'}'$'
@@ -62,4 +66,4 @@ then
 fi
 echo "Done."
 echo -e "Start fetching nginx access logs...\n"
-#tail -f -n 20 /var/log/nginx/access.log
+tail -f -n 20 /var/log/nginx/access.log
