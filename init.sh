@@ -9,8 +9,8 @@ then
     echo "[ERR]Cannot read the env!Have you set them?"
     exit 1
 fi
-pixivDomain2='~^([^.]+)'${pixivDomain//'.'/'\.'}'$'
-pximgDomain2='~^([^.]+)'${pximgDomain//'.'/'\.'}'$'
+pixivDomain2='~^([^.]+)'${pixivDomain//'.'/'\\.'}'$'
+pximgDomain2='~^([^.]+)'${pximgDomain//'.'/'\\.'}'$'
 
 echo "Pixiv Proxy"
 echo "Author:Creeper2077"
