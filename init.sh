@@ -17,7 +17,7 @@ echo "Author:Creeper2077"
 echo "Github: https://github.com/Creeper2077/pixiv-proxy-cn"
 echo "Using GPL3.0 License"
 echo "Please abide by the use agreement of relevant service providers!"
-echo pixivDomain2 pximgDomain2
+echo $pixivDomain2 $pximgDomain2
 printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s\n" $pixivDomain $pximgDomain
 printf "The program will run on port %s\n" $port
 echo "Replace the domain..."
