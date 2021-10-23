@@ -22,7 +22,7 @@ printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s\n" $pixivDomain $pximgDomain
 printf "The program will run on port %s\n" $port
 echo "Replace the domain..."
 sed -i "s/@PIXIV_DOMAIN@/${pixivDomain}/g" /etc/nginx/nginx.conf
-sed -i "s/@PIXIV_DOMAIN2@/${pixiivDomain2}/g" /etc/nginx/nginx.conf
+sed -i "s/@PIXIV_DOMAIN2@/${pixivDomain2}/g" /etc/nginx/nginx.conf
 sed -i "s/@PXIMG_DOMAIN@/${pximgDomain}/g" /etc/nginx/nginx.conf
 sed -i "s/@PXIMG_DOMAIN2@/${pximgDomain2}/g" /etc/nginx/nginx.conf
 echo "Done."
