@@ -59,6 +59,6 @@ then
     exit 1
 fi
 echo "Done."
-echo -e "Start etching nginx access logs..。\n"
-tail -f -n 20 /var/log/nginx/error.log
+echo -e "Start etching nginx access logs...\n"
+tail -f -n 20 /var/log/nginx/sccess.log
 exit 0
