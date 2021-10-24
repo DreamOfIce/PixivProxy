@@ -7,7 +7,7 @@ echo "Github: https://github.com/Creeper2077/pixiv-proxy-cn"
 echo "Using GPL3.0 License"
 echo "Please abide by the use agreement of relevant service providers!"
 echo "==============================="
-echo "Start building image."
+echo "Start install."
 echo "Update source..."
 apt update -qq
 apt upgrade -y -qq
