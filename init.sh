@@ -55,7 +55,6 @@ echo "imp.${pixivDomain}.	1	IN	CNAME	your.container.domain."
 echo "i.${pximgDomain}.	1	IN	CNAME	your.container.domain."
 echo "s.${pximgDomain}.	1	IN	CNAME	your.container.domain."
 echo -e "pixiv.${pximgDomain}.	1	IN	CNAME	your.container.domain.\n"
-cat /etc/nginx/nginx.conf
 echo "Start nginx..."
 service nginx start
 if [ $? != 0 ]
