@@ -28,8 +28,8 @@ apt clean -qq
 apt autoremove -qq
 echo "done."
 echo "Finish!"
-read -p "Please enter the name to be used to replace *.pixiv.net" $pixivDomain
-read -p "Please enter the name to be used to replace *.pximg.net" $pximgDomain
+read -p "Please enter the name to be used to replace *.pixiv.net: " pixivDomain
+read -p "Please enter the name to be used to replace *.pximg.net: " pximgDomain
 export PIXIV_DOMAIN=$pixivDomain
 export PXIMG_DOMAIN=$pximgDomain
 echo "Run init script..."
