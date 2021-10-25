@@ -60,13 +60,14 @@ then
 fi
 if [[ ! $BLOCK_IP ]]
 then
-    read -t15 -n1 -p "Do you wang to block the IP outside Chinese mainland?(If you are using CDN,plase disable this)[y/N]:" input
+    read -t15 -n1 -p "Do you wang to block the IP outside Chinese?(If you are using CDN,plase disable this)[y/N]:" input
     if [[ $input = "Y"|| $input = "y" ]]
     then
         export BLOCK_IP=0
     else
         export BLOCK_IP=1
     fi
+    printf "\n"
 fi
 echo "Run init script..."
 ./scripts/init.sh

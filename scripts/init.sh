@@ -5,7 +5,7 @@ pixivDomain=$PIXIV_DOMAIN
 pximgDomain=$PXIMG_DOMAIN
 port=$PORT
 port2=$PORT2
-if [[ ${PORT2} ]]; then $enable_https=0; else enable_https=1; fi
+if [[ ${PORT2} ]]; then enable_https=0; else enable_https=1; fi
 enable_ipset=$BLOCK_IP
 if [[ -z "${pixivDomain}" || -z "${pximgDomain}" ]]
 then
@@ -24,7 +24,6 @@ echo "Author:Creeper2077"
 echo "Github: https://github.com/Creeper2077/pixiv-proxy-cn"
 echo "Using GPL3.0 License"
 echo "Please abide by the use agreement of relevant service providers!"
-echo $pixivDomain2 $pximgDomain2
 printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s\n" $pixivDomain $pximgDomain
 printf "The program will run on port %s" $port
 if [[ $enable_https ]]; then printf "and %s.\n" $port2; else printf ".\n"; fi
