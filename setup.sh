@@ -34,7 +34,7 @@ export PXIMG_DOMAIN=$pximgDomain
 if [ -n $PORT || -n $PORT2 ]
 then
     read -p "Do you want to use HTTPS?[y/N]?" input -n1 -t30
-    if [ $input = "Y"|| $input = "y" ]
+    if [ $input = "Y" || $input = "y" ]
     then
 	    echo "Using HTTPS."
         if  read -p "Input the port of HTTPS:" input -t15 -n5
