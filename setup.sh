@@ -23,12 +23,18 @@ chmod -R +x ./scripts
 apt clean -qq > /dev/null
 apt autoremove -qq > /dev/null
 echo -e "Done.\n\n"
+if [ -z $PIXIV_DOMAIN ]
+then
 echo "Please enter the domain to be used to replace *.pixiv.net:"
 read pixivDomain
+export PIXIV_DOMAIN="$pixivDomain"
+fi
+if [ $PXIMG_DOMAIN ]
+then
 echo "Please enter the domain to be used to replace *.pximg.net:"
 read pximgDomain
-export PIXIV_DOMAIN=$pixivDomain
-export PXIMG_DOMAIN=$pximgDomain
+export PXIMG_DOMAIN="$pximgDomain"
+fi
 if [[ -z $PORT || -z $PORT2 ]]
 then
     read -n1 -t30 -p "Do you want to use HTTPS?[y/N]?" input
