@@ -18,7 +18,7 @@ echo "Add user www..."
 groupadd -r www
 useradd -r -g www www
 echo "Done."
-echo "Run final processing..."
+echo "Set ..."
 chmod -R +x ./scripts
 apt clean -qq > /dev/null
 apt autoremove -qq > /dev/null
@@ -27,20 +27,20 @@ read -p "Please enter the domain to be used to replace *.pixiv.net:" pixivDomain
 read -p "Please enter the domain to be used to replace *.pximg.net:" pximgDomain
 export PIXIV_DOMAIN=$pixivDomain
 export PXIMG_DOMAIN=$pximgDomain
-if [[ -n $PORT || -n $PORT2 ]]
+if [[ -z $PORT || -z $PORT2 ]]
 then
-    read -p "Do you want to use HTTPS?[y/N]?" input -n1 -t30
+    read -n1 -t30 -p "Do you want to use HTTPS?[y/N]?" input
     if [[ $input = "Y" || $input = "y" ]]
     then
 	    echo "Using HTTPS."
-        if  read -p "Input the port of HTTPS:" input -t15 -n5
+        if  read -t15 -n5 -p "Input the port of HTTPS:" input
         then
             export PORT=$input
         else
             export PORT=443
             echo "Using default:443"
         fi
-        if  read -p "Input the port of HTTP:" input -t15 -n5
+        if  read -t15 -n5 -p "Input the port of HTTP:" input
         then
             export PORT2=$input
         else
@@ -49,7 +49,7 @@ then
         fi
     else
         echo "Using HTTP."
-        if  read -p "Input the port:" input -t15 -n5
+        if  read -t15 -n5 -p "Input the port:" input
         then
             export PORT=$input
         else
@@ -60,7 +60,7 @@ then
 fi
 if [[ ! $BLOCK_IP ]]
 then
-    read -p "Do you wang to block the IP outside Chinese mainland?(If you are using CDN,plase disable this)[y/N]:" -t15 -n1 input
+    read -t15 -n1 -p "Do you wang to block the IP outside Chinese mainland?(If you are using CDN,plase disable this)[y/N]:" input
     if [[ $input = "Y"|| $input = "y" ]]
     then
         export BLOCK_IP=0
