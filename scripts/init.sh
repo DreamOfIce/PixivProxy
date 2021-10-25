@@ -7,12 +7,12 @@ port=$PORT
 port2=$PORT2
 enable_https=-z "${PORT2}"
 enable_ipset=$BLOCK_IP
-if [ -z "${pixivDomain}" -o -z "${pximgDomain}" ]
+if [[ -z "${pixivDomain}" -o -z "${pximgDomain}" ]]
 then
     echo "[ERR]Cannot read the env!Have you set them?"
     exit 1
 fi
-if [ -z "$port" ]
+if [[ -z "$port" ]]
 then
     port=8080
 fi
@@ -27,9 +27,9 @@ echo "Please abide by the use agreement of relevant service providers!"
 echo $pixivDomain2 $pximgDomain2
 printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s\n" $pixivDomain $pximgDomain
 printf "The program will run on port %s" $port
-if [ $enable_https ]; then printf "and %s.\n" $port2; else printf ".\n"; fi
+if [[ $enable_https ]]; then printf "and %s.\n" $port2; else printf ".\n"; fi
 echo "Copy nginx.conf..."
-if [ $enable_https ]
+if [[ $enable_https ]]
 then
     cp ../nginx_https.conf /etc/nginx/nginx.conf
 else
@@ -48,12 +48,12 @@ sed -i "s/@PORT2@/${port2}/g" /etc/nginx/nginx.conf
 echo "Done."
 echo "Test nginx config..."
 nginx -t
-if [ $? = 0 ]
+if [[ $? = 0 ]]
 then
     echo "Success!"
     echo "Start nginx..."
     service nginx start
-    if [ $? != 0 ]
+    if [[ $? != 0 ]]
     then
         echo "[ERR]Start nginx failed!"
         exit 1
@@ -62,7 +62,7 @@ then
 else
     exit 1
 fi
-if [ $enable_https ]
+if [[ $enable_https ]]
 then
     echo "Unmask SSL certificate configuration..."
     sed -i "s/#@ssl_certificate@/ssl_certificate/g" /etc/nginx/nginx.conf

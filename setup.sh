@@ -31,10 +31,10 @@ read -p "Please enter the name to be used to replace *.pixiv.net:" pixivDomain
 read -p "Please enter the name to be used to replace *.pximg.net:" pximgDomain
 export PIXIV_DOMAIN=$pixivDomain
 export PXIMG_DOMAIN=$pximgDomain
-if [ -n $PORT || -n $PORT2 ]
+if [[ -n $PORT || -n $PORT2 ]]
 then
     read -p "Do you want to use HTTPS?[y/N]?" input -n1 -t30
-    if [ $input = "Y" || $input = "y" ]
+    if [[ $input = "Y" || $input = "y" ]]
     then
 	    echo "Using HTTPS."
         if  read -p "Input the port of HTTPS:" input -t15 -n5
@@ -62,10 +62,10 @@ then
         fi
     fi
 fi
-if [ ! $BLOCK_IP ]
+if [[ ! $BLOCK_IP ]]
 then
     read -p "Do you wang to block the IP outside Chinese mainland?(If you are using CDN,plase disable this)[y/N]:" -t15 -n1 input
-    if [ $input = "Y"|| $input = "y" ]
+    if [[ $input = "Y"|| $input = "y" ]]
     then
         export BLOCK_IP=0
     else
