@@ -5,9 +5,9 @@ pixivDomain=$PIXIV_DOMAIN
 pximgDomain=$PXIMG_DOMAIN
 port=$PORT
 port2=$PORT2
-enable_https=-z "${PORT2}"
+if [[ ${PORT2} ]]; then $enable_https=0; else enable_https=1; fi
 enable_ipset=$BLOCK_IP
-if [[ -z "${pixivDomain}" -o -z "${pximgDomain}" ]]
+if [[ -z "${pixivDomain}" || -z "${pximgDomain}" ]]
 then
     echo "[ERR]Cannot read the env!Have you set them?"
     exit 1

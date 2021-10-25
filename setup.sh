@@ -23,8 +23,8 @@ chmod -R +x ./scripts
 apt clean -qq > /dev/null
 apt autoremove -qq > /dev/null
 echo "Done."
-read -p "Please enter the name to be used to replace *.pixiv.net:" pixivDomain
-read -p "Please enter the name to be used to replace *.pximg.net:" pximgDomain
+read -p "Please enter the domain to be used to replace *.pixiv.net:" pixivDomain
+read -p "Please enter the domain to be used to replace *.pximg.net:" pximgDomain
 export PIXIV_DOMAIN=$pixivDomain
 export PXIMG_DOMAIN=$pximgDomain
 if [[ -n $PORT || -n $PORT2 ]]
