@@ -11,7 +11,7 @@ read -p "Enter your e-mail(for SSL certs): " -t30 -n100 ssl_email
     if [ $ssl_email ]; then echo "Using default email."; ssl_email='admin@my-pixiv.cn'; fi
 printf "\n"
 curl  https://get.acme.sh | sh -s email=$ssl_email
-${home}/.acme.sh/acme.sh--upgrade  --auto-upgrade
+${HOME}/.acme.sh/acme.sh--upgrade  --auto-upgrade
 echo "Done."
 
 #Issue SSL
@@ -26,7 +26,7 @@ do
         fi
     done
     echo "Start to issue the cert..."
-    if ${home}/.acme.sh/acme.sh --issue  -d "*.$PIXIV_DOMAIN" -d "*.$PXIMG_DOMAIN"  --webroot /var/www/html
+    if ${HOME}/.acme.sh/acme.sh --issue  -d "*.$PIXIV_DOMAIN" -d "*.$PXIMG_DOMAIN"  --webroot /var/www/html
     then
     echo "Done."
     break
@@ -41,10 +41,10 @@ if [ ! -e /etc/nginx/cert ]
 then
     mkdir /etc/nginx/cert
 fi
-${home}/.acme.sh/acme.sh--install-cert -d "*.$PIXIV_DOMAIN" \
+${HOME}/.acme.sh/acme.sh--install-cert -d "*.$PIXIV_DOMAIN" \
 --key-file       /etc/nginx/cert/pixiv_key.pem  \
 --fullchain-file /etc/nginx/cert/pixiv_cert.pem
-${home}/.acme.sh/acme.sh--install-cert -d "*.$PXIMG_DOMAIN" \
+${HOME}/.acme.sh/acme.sh--install-cert -d "*.$PXIMG_DOMAIN" \
 --key-file       /etc/nginx/cert/pximg_key.pem  \
 --fullchain-file /etc/nginx/cert/pximg_cert.pem \
 --reloadcmd     "nginx -t && service nginx force-reload"
