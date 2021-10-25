@@ -31,9 +31,9 @@ read -p "Please enter the name to be used to replace *.pixiv.net:" pixivDomain
 read -p "Please enter the name to be used to replace *.pximg.net:" pximgDomain
 export PIXIV_DOMAIN=$pixivDomain
 export PXIMG_DOMAIN=$pximgDomain
-if [ ! $PORT || ! $PORT2 ]
+if [ -n $PORT || -n $PORT2 ]
 then
-    read -p "Do you want to use HTTPS?[y/N]?" -n1 -t30 input
+    read -p "Do you want to use HTTPS?[y/N]?" input -n1 -t30
     if [ $input = "Y"|| $input = "y" ]
     then
 	    echo "Using HTTPS."
