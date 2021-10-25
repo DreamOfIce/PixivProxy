@@ -50,7 +50,6 @@ wait(){
     do
         if read -p "." -n1 -t1 -s input
         then
-        printf "\n"
         break
         fi
     done
