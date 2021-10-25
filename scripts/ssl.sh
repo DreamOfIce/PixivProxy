@@ -2,16 +2,16 @@
 #Configune SSL
 
 #Install
-echo "Install curl..."
+echo "Prepare to Install..."
 apt update -qq > /dev/null
-apt install curl -y -qq --no-install-recommends > /dev/null
+apt install curl crontab -y -qq --no-install-recommends > /dev/null
 echo "Done."
 echo "Install acme.sh..."
 read -p "Enter your e-mail(for SSL certs): " -t30 -n100 ssl_email
     if [ $ssl_email ]; then echo "Using default email."; ssl_email='admin@my-pixiv.cn'; fi
 printf "\n"
 curl  https://get.acme.sh | sh -s email=$ssl_email
-acme.sh  --upgrade  --auto-upgrade
+${home}/.acme.sh/acme.sh--upgrade  --auto-upgrade
 echo "Done."
 
 #Issue SSL
@@ -26,12 +26,13 @@ do
         fi
     done
     echo "Start to issue the cert..."
-    if acme.sh  --issue  -d "*.$PIXIV_DOMAIN" -d "*.$PXIMG_DOMAIN"  --webroot /var/www/html
+    if ${home}/.acme.sh/acme.sh --issue  -d "*.$PIXIV_DOMAIN" -d "*.$PXIMG_DOMAIN"  --webroot /var/www/html
     then
     echo "Done."
     break
     else
     echo "Fail!Are you sure the domains $PIXIV_DOMAIN and $PXIMG_DOMAIN points to this server?"
+    fi
     if [ i==5 ]; then exit 1; fi
 done
 #Install SSL
@@ -40,10 +41,10 @@ if [ ! -e /etc/nginx/cert ]
 then
     mkdir /etc/nginx/cert
 fi
-acme.sh --install-cert -d "*.$PIXIV_DOMAIN" \
+${home}/.acme.sh/acme.sh--install-cert -d "*.$PIXIV_DOMAIN" \
 --key-file       /etc/nginx/cert/pixiv_key.pem  \
 --fullchain-file /etc/nginx/cert/pixiv_cert.pem
-acme.sh --install-cert -d "*.$PXIMG_DOMAIN" \
+${home}/.acme.sh/acme.sh--install-cert -d "*.$PXIMG_DOMAIN" \
 --key-file       /etc/nginx/cert/pximg_key.pem  \
 --fullchain-file /etc/nginx/cert/pximg_cert.pem \
 --reloadcmd     "nginx -t && service nginx force-reload"

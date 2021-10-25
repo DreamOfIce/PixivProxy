@@ -18,7 +18,7 @@ echo "Add user www..."
 groupadd -r www
 useradd -r -g www www
 echo "Done."
-echo "Set ..."
+echo "Set Permission..."
 chmod -R +x ./scripts
 apt clean -qq > /dev/null
 apt autoremove -qq > /dev/null
