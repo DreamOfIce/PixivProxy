@@ -18,15 +18,11 @@ echo "Add user www..."
 groupadd -r www
 useradd -r -g www www
 echo "Done."
-echo "Copy files..."
-cp nginx.conf /etc/nginx/nginx.conf
-echo "Done."
 echo "Run final processing..."
-chmod +x init.sh
+chmod +x ./scripts
 apt clean -qq > /dev/null
 apt autoremove -qq > /dev/null
-echo "done."
-echo "Finish!"
+echo "Done."
 read -p "Please enter the name to be used to replace *.pixiv.net:" pixivDomain
 read -p "Please enter the name to be used to replace *.pximg.net:" pximgDomain
 export PIXIV_DOMAIN=$pixivDomain
@@ -73,5 +69,5 @@ then
     fi
 fi
 echo "Run init script..."
-./init.sh
+./scripts/init.sh
 echo "Done."
