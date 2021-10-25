@@ -18,7 +18,13 @@ echo "Done."
 for((i=1;i<=5;i++))
 do
     echo "Wait 5 minutes for the DNS record to take effect.Press any key to skip!"
-    wait(300)
+    for((i=0;i<=300;i++))
+    do
+        if read -p "." -n1 -t1 -s input
+        then
+        break
+        fi
+    done
     echo "Start to issue the cert..."
     if acme.sh  --issue  -d "*.$PIXIV_DOMAIN" -d "*.$PXIMG_DOMAIN"  --webroot /var/www/html
     then
@@ -44,13 +50,3 @@ acme.sh --install-cert -d "*.$PXIMG_DOMAIN" \
 echo "Done."
 echo "Successful configune SSL!"
 exit 0
-
-wait(){
-    for((i=0;i<=$1;i++))
-    do
-        if read -p "." -n1 -t1 -s input
-        then
-        break
-        fi
-    done
-}

@@ -68,7 +68,7 @@ then
     sed -i "s/#@ssl_certificate@/ssl_certificate/g" /etc/nginx/nginx.conf
     echo "Done."
     echo "Run ssl.sh..."
-    if ./ssl.sh
+    if ./scripts/ssl.sh
     then
         echo "Success!"
     else
@@ -79,7 +79,7 @@ fi
 if [ $enable_ipset ]
 then
     echo "Block the IP outside the China"
-    if ./ipset.sh
+    if ./scripts/ipset.sh
     then
         echo "Done."
     else
@@ -88,6 +88,7 @@ then
     fi
 fi
 echo "All Done."
+sleep 60s
 echo -e "Start fetching nginx access logs...\n"
 tail -f -n10 /var/log/nginx/access.log
 echo -e "\nQuit!"
