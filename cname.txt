@@ -1,0 +1,11 @@
+;; pixiv
+pixiv 	 	1	IN	CNAME	DOMAIN_HERE
+www.pixiv 	1	IN	CNAME	DOMAIN_HERE
+accounts.pixiv 	1	IN	CNAME	DOMAIN_HERE
+source.pixiv	1	IN	CNAME	DOMAIN_HERE
+imp.pixiv   	1	IN	CNAME	DOMAIN_HERE
+;;pximg
+pximg 	 	1	IN	CNAME	DOMAIN_HERE
+i.pximg	 	1	IN	CNAME	DOMAIN_HERE
+s.pximg	 	1	IN	CNAME	DOMAIN_HERE
+pixiv.pximg	1	IN	CNAME	DOMAIN_HERE
