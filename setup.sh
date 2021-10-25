@@ -19,7 +19,7 @@ groupadd -r www
 useradd -r -g www www
 echo "Done."
 echo "Run final processing..."
-chmod +x ./scripts
+chmod -R +x ./scripts
 apt clean -qq > /dev/null
 apt autoremove -qq > /dev/null
 echo "Done."

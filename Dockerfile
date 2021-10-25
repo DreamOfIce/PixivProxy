@@ -24,7 +24,7 @@ RUN echo "Pixiv Proxy" \
 COPY ./*.conf /home
 COPY ./scripts/*.sh /home/scripts
 RUN echo "Run final processing..." \
-    && chmod +x /home/scripts \
+    && chmod -R +x /home/scripts \
     && apt clean -qq > /dev/null \
     && apt autoremove -qq > /dev/null \
     && echo "done." \
