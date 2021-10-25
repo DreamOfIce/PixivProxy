@@ -22,9 +22,11 @@ echo "Set ..."
 chmod -R +x ./scripts
 apt clean -qq > /dev/null
 apt autoremove -qq > /dev/null
-echo "Done."
-read -p "Please enter the domain to be used to replace *.pixiv.net:" pixivDomain
-read -p "Please enter the domain to be used to replace *.pximg.net:" pximgDomain
+echo -e "Done.\n\n"
+echo "Please enter the domain to be used to replace *.pixiv.net:"
+read pixivDomain
+echo "Please enter the domain to be used to replace *.pximg.net:"
+read pximgDomain
 export PIXIV_DOMAIN=$pixivDomain
 export PXIMG_DOMAIN=$pximgDomain
 if [[ -z $PORT || -z $PORT2 ]]

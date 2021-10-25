@@ -75,9 +75,9 @@ then
         exit 1
     fi
 fi
-if [ $enable_ipset ]
+if [[ $enable_ipset ]]
 then
-    echo "Block the IP outside the China"
+    echo "Block the IP outside the China..."
     if ./scripts/ipset.sh
     then
         echo "Done."
