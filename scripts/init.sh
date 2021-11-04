@@ -26,9 +26,9 @@ if [[ $enable_https ]]; then printf "and %s.\n" $port2; else printf ".\n"; fi
 echo "Copy nginx.conf..."
 if [[ $enable_https ]]
 then
-    cp ../nginx_https.conf /etc/nginx/nginx.conf
+    cp ./nginx_https.conf /etc/nginx/nginx.conf
 else
-    cp ../nginx_http.conf /etc/nginx/nginx.conf
+    cp ./nginx_http.conf /etc/nginx/nginx.conf
 fi
 echo "Done."
 echo "Replace the domain..."
@@ -53,6 +53,7 @@ then
         echo -e "\033[31m [ERR]Start nginx failed! \033[0m"
         exit 1
     fi
+    service nginx reload
     echo "Done."
 else
     exit 1
