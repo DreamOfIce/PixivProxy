@@ -50,7 +50,7 @@ do
     -d "i.${PXIMG_DOMAIN}" \
     -d "s.${PXIMG_DOMAIN}" \
     -d "pixiv.${PXIMG_DOMAIN}"
-    if [[] $? -eq 0 && $code -eq 0 ]]
+    if [[ $? -eq 0 && $code -eq 0 ]]
     then
         echo "Done."
         break
