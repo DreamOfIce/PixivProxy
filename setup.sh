@@ -43,7 +43,7 @@ then
         echo "[Git mode] Clone SSL cert from private git repo;"
         echo "[ACME mode] Automatically issue SSL certificates from ZeroSSL(acme.sh)."
         read -t15 -p "Input your answer[acme,git]: " input_ssl_mode
-        if [ ${input_ssl_mode,,} = "git" ]
+        if [[ ${input_ssl_mode,,} = "git" ]]
         then
             export SSL_MODE="git"
             read -n2048 -p "Enter the Git URL(like git@xxx.xx:username/repo):" git_url
@@ -51,7 +51,7 @@ then
         else
             export SSL_MODE="acme"
             read -t30 -n100 -p "Enter your e-mail(for issue SSL certs): " input_email
-            if [ -n "$input_email" && $? == 0 ]
+            if [[ -n "$input_email" && $? == 0 ]]
             then
                 export EMAIL=$input_email
             else
@@ -60,7 +60,7 @@ then
             fi
         fi
         read -t15 -n5 -p "Input the port of HTTPS:" input_port
-        if  [ -n "$input_port" && $? == 0 ]
+        if  [[ -n "$input_port" && $? == 0 ]]
         then
             export PORT=$input_port
         else
@@ -68,7 +68,7 @@ then
             echo "Using default:443"
         fi
         read -t15 -n5 -p "Input the port of HTTP:" input_port2
-        if [ -n "$_port2" && $? == 0 ]
+        if [[ -n "$_port2" && $? == 0 ]]
         then
             export PORT2=$input_port2
         else
