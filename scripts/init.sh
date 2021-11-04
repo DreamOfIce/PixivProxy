@@ -66,11 +66,11 @@ then
     echo "Start getting SSL..."
     if [[ ${SSL_MODE,,} = "git" ]]
     then
-        ./scripts/ssl_git.ssh
+        ./scripts/ssl_git.sh
     else
         ./scripts/ssl_acme.sh
     fi
-    if [ $? != 0 ]
+    if [ $? == 0 ]
     then
         echo "Success!"
     else
