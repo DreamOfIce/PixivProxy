@@ -8,7 +8,7 @@ echo "Get ip list..."
 ipset -N cnip hash:net
 for i in $(curl -L https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt)
 do
- ipset -A cnip $i
+ ipset -A cnip $i > /dev/null
 done
 echo "Done."
 echo "Write rules..."
