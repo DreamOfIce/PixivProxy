@@ -5,7 +5,7 @@
 echo "Get SSL form ZeroSSL!"
 echo "Prepare to Install..."
 apt update -qq > /dev/null
-apt install wget crontab -y -qq --no-install-recommends > /dev/null
+apt install wget cron -y -qq --no-install-recommends > /dev/null
 echo "Done."
 echo "Install acme.sh..."
 wget -O -  https://get.acme.sh | sh -s email=$EMAIL
