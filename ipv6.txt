@@ -1,11 +1,18 @@
 ;; pixiv
-pixiv 	 	1	IN	AAAA	IPV6_HERE
-www.pixiv 	1	IN	AAAA	IPV6_HERE
-accounts.pixiv 	1	IN	AAAA	IPV6_HERE
-source.pixiv	1	IN	AAAA	IPV6_HERE
-imp.pixiv   	1	IN	AAAA	IPV6_HERE
+pixiv 	 	    1	IN	AAAA	YOUR_HOST
+www.pixiv 	    1	IN	AAAA	YOUR_HOST
+accounts.pixiv 	1	IN	AAAA	YOUR_HOST
+source.pixiv	1	IN	AAAA	YOUR_HOST
+imp.pixiv   	1	IN	AAAA	YOUR_HOST
+archive.pixiv  	1	IN	AAAA	YOUR_HOST
+blog.pixiv   	1	IN	AAAA	YOUR_HOST
+chat.pixiv   	1	IN	AAAA	YOUR_HOST
+help.pixiv   	1	IN	AAAA	YOUR_HOST
+link.pixiv   	1	IN	AAAA	YOUR_HOST
+m.pixiv   	    1	IN	AAAA	YOUR_HOST
+
 ;;pximg
-pximg 	 	1	IN	AAAA	IPV6_HERE
-i.pximg	 	1	IN	AAAA	IPV6_HERE
-s.pximg	 	1	IN	AAAA	IPV6_HERE
-pixiv.pximg	1	IN	AAAA	IPV6_HERE
+pximg 	 	    1	IN	AAAA	YOUR_HOST
+i.pximg	 	    1	IN	AAAA	YOUR_HOST
+s.pximg	 	    1	IN	AAAA	YOUR_HOST
+pixiv.pximg	    1	IN	AAAA	YOUR_HOST

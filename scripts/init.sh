@@ -9,7 +9,7 @@ if [[ ${PORT2} ]]; then enable_https=0; else enable_https=1; fi
 enable_ipset=$BLOCK_IP
 if [[ -z "${pixivDomain}" || -z "${pximgDomain}" ]]
 then
-    echo "[ERR]Cannot read the env!Have you set them?"
+    echo -e "\033[31m [ERR]Cannot read the env!Have you set them? \033[0m"
     exit 1
 fi
 if [[ -z "$port" ]]
@@ -19,11 +19,7 @@ fi
 pixivDomain2='~^([^.]+)\\.'${pixivDomain//'.'/'\\.'}'$'
 pximgDomain2='~^([^.]+)\\.'${pximgDomain//'.'/'\\.'}'$'
 
-echo "Pixiv Proxy"
-echo "Author:Creeper2077"
-echo "Github: https://github.com/Creeper2077/pixiv-proxy-cn"
-echo "Using GPL3.0 License"
-echo "Please abide by the use agreement of relevant service providers!"
+echo "Start init"
 printf "*.pixiv.net ==> *.%s *.pximg.net ==> *.%s\n" $pixivDomain $pximgDomain
 printf "The program will run on port %s" $port
 if [[ $enable_https ]]; then printf "and %s.\n" $port2; else printf ".\n"; fi
@@ -54,7 +50,7 @@ then
     service nginx start
     if [[ $? != 0 ]]
     then
-        echo "[ERR]Start nginx failed!"
+        echo -e "\033[31m [ERR]Start nginx failed! \033[0m"
         exit 1
     fi
     echo "Done."
@@ -66,14 +62,22 @@ then
     echo "Unmask SSL certificate configuration..."
     sed -i "s/#@ssl_certificate@/ssl_certificate/g" /etc/nginx/nginx.conf
     echo "Done."
-    echo "Run ssl.sh..."
-    if ./scripts/ssl.sh
+    echo "Start getting SSL..."
+    if [[ ${SSL_MODE,,} = "git" ]]
+    then
+        ./ssl_git.ssh
+    else
+        ./ssl_acme.sh
+    fi
+    if [ $? != 0 ]
     then
         echo "Success!"
     else
-        echo "Fail!"
+        echo -e "\033[31 mFail! \033[0m"
         exit 1
     fi
+else
+    echo -e "\033[33m Skip SSL configuration. \033[0m"
 fi
 if [[ $enable_ipset ]]
 then
@@ -82,13 +86,12 @@ then
     then
         echo "Done."
     else
-        echo "Error to setup!"
+        echo -e "\033[31m Error to setup! \033[0m"
         exit 1
     fi
+else
+    echo -e "\033[33m Skip IP-Block. \033[0m"
 fi
-echo "All Done."
-sleep 60s
-echo -e "Start fetching nginx access logs...\n"
-tail -f -n10 /var/log/nginx/access.log
-echo -e "\nQuit!"
+echo -e "\033[36m All DOne! \033[0m"
+echo -e "Quit!"
 exit 0
