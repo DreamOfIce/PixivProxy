@@ -68,12 +68,12 @@ if [ ! -e /etc/nginx/cert ]
 then
     mkdir /etc/nginx/cert
 fi
-~/.acme.sh/acme.sh --install-cert -d "{$PIXIV_DOMAIN}" \
---key-file       /etc/nginx/cert/${$PIXIV_DOMAIN}.crt  \
---fullchain-file /etc/nginx/cert/${$PIXIV_DOMAIN}.key
+~/.acme.sh/acme.sh --install-cert -d "${PIXIV_DOMAIN}" \
+--key-file       /etc/nginx/cert/${PIXIV_DOMAIN}.crt  \
+--fullchain-file /etc/nginx/cert/${PIXIV_DOMAIN}.key
 ~/.acme.sh/acme.sh --install-cert -d "${PXIMG_DOMAIN}" \
---key-file       /etc/nginx/cert/${$PXIMG_DOMAIN}.crt  \
---fullchain-file /etc/nginx/cert/${$PXIMG_DOMAIN}.key \
+--key-file       /etc/nginx/cert/${PXIMG_DOMAIN}.crt  \
+--fullchain-file /etc/nginx/cert/${PXIMG_DOMAIN}.key \
 --reloadcmd     "nginx -t && service nginx force-reload"
 echo "Done."
 echo -e "\033[36m Successful configune SSL! \033[0m"
