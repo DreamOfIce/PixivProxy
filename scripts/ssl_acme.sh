@@ -10,8 +10,8 @@ echo "Done."
 echo "Install acme.sh..."
 wget -O -  https://get.acme.sh | sh -s email=$EMAIL
 source ~/.bashrc
-acme.sh  --register-account  -m $EMAIL --server zerossl
-acme.sh --upgrade  --auto-upgrade
+~/.acme.sh/acme.sh  --register-account  -m $EMAIL --server zerossl
+~/.acme.sh/acme.sh --upgrade  --auto-upgrade
 echo "Done."
 
 #functions
@@ -31,7 +31,7 @@ do
     echo "Wait 5 minutes for the DNS record to take effect.Press any key to skip!"
     waiting 300
     echo "Start to issue the cert..."
-    acme.sh --issue --webroot /var/www/html \
+    ~/.acme.sh/acme.sh --issue --webroot /var/www/html \
     -d "${PIXIV_DOMAIN}" \
     -d "www.${PIXIV_DOMAIN}" \
     -d "accounts.${PIXIV_DOMAIN}" \
@@ -44,7 +44,7 @@ do
     -d "link.${PIXIV_DOMAIN}" \
     -d "m.${PIXIV_DOMAIN}"
     code=$?
-    acme.sh --issue --webroot /var/www/html \
+    ~/.acme.sh/acme.sh --issue --webroot /var/www/html \
     -d "${PXIMG_DOMAIN}" \
     -d "www.${PXIMG_DOMAIN}" \
     -d "i.${PXIMG_DOMAIN}" \
@@ -68,10 +68,10 @@ if [ ! -e /etc/nginx/cert ]
 then
     mkdir /etc/nginx/cert
 fi
-acme.sh --install-cert -d "{$PIXIV_DOMAIN}" \
+~/.acme.sh/acme.sh --install-cert -d "{$PIXIV_DOMAIN}" \
 --key-file       /etc/nginx/cert/${$PIXIV_DOMAIN}.crt  \
 --fullchain-file /etc/nginx/cert/${$PIXIV_DOMAIN}.key
-acme.sh --install-cert -d "${PXIMG_DOMAIN}" \
+~/.acme.sh/acme.sh --install-cert -d "${PXIMG_DOMAIN}" \
 --key-file       /etc/nginx/cert/${$PXIMG_DOMAIN}.crt  \
 --fullchain-file /etc/nginx/cert/${$PXIMG_DOMAIN}.key \
 --reloadcmd     "nginx -t && service nginx force-reload"
