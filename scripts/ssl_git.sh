@@ -27,7 +27,7 @@ printf "\n"
 ssh -o StrictHostKeyChecking=no ${server}
 echo "Wait five minutes,then try to connect to ${server}..."
 echo "Press any key to skip."
-wait 300
+waiting 300
 for ((i=1;i<=5;i++))
 do
     ssh -T ${server}
@@ -38,7 +38,7 @@ do
     elif [ i -lt 5 ]
         echo -e "\033[31m [ERROR]Connection failed! \033[0m"
         echo "Wait 3 minutes to try again.Press any key to skip!"
-        wait 180
+        waiting 180
     else
         echo -e "\033[31m [ERROR]Connection failed!Are you sure you added the public key correctly? \033[0m"
         echo "Quit!"
@@ -75,7 +75,7 @@ echo -e "\033[36m Successful configune SSL! \033[0m"
 exit 0
 
 #functions
-wait(){
+waiting(){
     for((j=0;j<$1;j++))
     do
         if read -p "." -n1 -t1 -s input

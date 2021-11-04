@@ -18,7 +18,7 @@ echo "Done."
 for((i=1;i<=5;i++))
 do
     echo "Wait 5 minutes for the DNS record to take effect.Press any key to skip!"
-    wait 300
+    waiting 300
     echo "Start to issue the cert..."
     acme.sh --issue --webroot /var/www/html \
     -d "${PIXIV_DOMAIN}" \
@@ -39,11 +39,11 @@ do
     -d "i.${PXIMG_DOMAIN}" \
     -d "s.${PXIMG_DOMAIN}" \
     -d "pixiv.${PXIMG_DOMAIN}"
-    if [ $? -eq 0 && $code -eq 0 ]
+    if [[] $? -eq 0 && $code -eq 0 ]]
     then
         echo "Done."
         break
-    elif [ i==5 ]
+    elif [[ i==5 ]]
     then
         echo -e "\033[31m Issue ail for five times,Quit! \033[0m"
         exit 1
@@ -69,7 +69,7 @@ echo -e "\033[36m Successful configune SSL! \033[0m"
 exit 0
 
 #functions
-wait(){
+waiting(){
     for((j=0;j<$1;j++))
     do
         if read -p "." -n1 -t1 -s input
