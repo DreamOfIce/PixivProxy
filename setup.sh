@@ -99,5 +99,5 @@ then
     printf "\n"
 fi
 echo "Run init script..."
-./scripts/init.sh
+./scripts/init.sh $PWD
 echo "Done."

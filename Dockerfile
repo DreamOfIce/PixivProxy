@@ -27,4 +27,4 @@ RUN echo "Run final processing..." \
     && apt autoremove -qq > /dev/null \
     && echo "done." \
     && echo -e "\033[36m All DOne! \033[0m"
-CMD [ "/home/scripts/init.sh" ]
+CMD [ "/home/scripts/init.sh /home" ]

@@ -26,9 +26,9 @@ if [[ $enable_https ]]; then printf "and %s.\n" $port2; else printf ".\n"; fi
 echo "Copy nginx.conf..."
 if [[ $enable_https ]]
 then
-    cp ./nginx_https.conf /etc/nginx/nginx.conf
+    cp $1/nginx_https.conf /etc/nginx/nginx.conf
 else
-    cp ./nginx_http.conf /etc/nginx/nginx.conf
+    cp $1/nginx_http.conf /etc/nginx/nginx.conf
 fi
 echo "Done."
 echo "Replace the domain..."
