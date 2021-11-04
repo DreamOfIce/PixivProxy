@@ -38,8 +38,8 @@ sed -i "s/@PXIMG_DOMAIN@/${pximgDomain}/g" /etc/nginx/nginx.conf
 sed -i "s/@PXIMG_DOMAIN2@/${pximgDomain2}/g" /etc/nginx/nginx.conf
 echo "Done."
 echo "Replace the ports..."
-sed -i "s/@PORT@/${port}/g" /etc/nginx/nginx.conf
 sed -i "s/@PORT2@/${port2}/g" /etc/nginx/nginx.conf
+sed -i "s/@PORT@/${port}/g" /etc/nginx/nginx.conf
 echo "Done."
 echo "Test nginx config..."
 nginx -t
