@@ -36,6 +36,7 @@ fi
 if [[ -z $PORT ]]
 then
     read -n1 -t30 -p "Do you want to use HTTPS?[y/N]?" input_https
+    printf "\n"
     if [[ ${input_https,,} = "y" ]]
     then
 	    echo "Using HTTPS."

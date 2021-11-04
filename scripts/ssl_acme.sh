@@ -44,6 +44,7 @@ do
         echo "Done."
         break
     elif [ i==5 ]
+    then
         echo -e "\033[31m Issue ail for five times,Quit! \033[0m"
         exit 1
     else
