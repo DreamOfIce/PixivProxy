@@ -6,6 +6,17 @@ repo=$GIT_URL
 server=${repo%:*}
 root=${PWD}
 
+#functions
+waiting(){
+    for((j=0;j<$1;j++))
+    do
+        if read -p "." -n1 -t1 -s input
+        then
+            break
+        fi
+    done
+}
+
 #Install dependencies
 echo "Clone SSL from Git repo"
 echo "Prepare to Install..."
@@ -73,14 +84,3 @@ service nginx force-reload
 echo "Done."
 echo -e "\033[36m Successful configune SSL! \033[0m"
 exit 0
-
-#functions
-waiting(){
-    for((j=0;j<$1;j++))
-    do
-        if read -p "." -n1 -t1 -s input
-        then
-            break
-        fi
-    done
-}

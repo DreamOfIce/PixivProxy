@@ -14,6 +14,17 @@ acme.sh  --register-account  -m $EMAIL --server zerossl
 acme.sh --upgrade  --auto-upgrade
 echo "Done."
 
+#functions
+waiting(){
+    for((j=0;j<$1;j++))
+    do
+        if read -p "." -n1 -t1 -s input
+        then
+            break
+        fi
+    done
+}
+
 #issue SSL
 for((i=1;i<=5;i++))
 do
@@ -67,14 +78,3 @@ acme.sh --install-cert -d "${PXIMG_DOMAIN}" \
 echo "Done."
 echo -e "\033[36m Successful configune SSL! \033[0m"
 exit 0
-
-#functions
-waiting(){
-    for((j=0;j<$1;j++))
-    do
-        if read -p "." -n1 -t1 -s input
-        then
-            break
-        fi
-    done
-}
