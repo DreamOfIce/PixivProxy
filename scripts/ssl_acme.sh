@@ -18,7 +18,7 @@ echo "Done."
 for((i=1;i<=5;i++))
 do
     echo "Wait 5 minutes for the DNS record to take effect.Press any key to skip!"
-    wait(300)
+    wait 300
     echo "Start to issue the cert..."
     acme.sh --issue --webroot /var/www/html \
     -d "${PIXIV_DOMAIN}" \
