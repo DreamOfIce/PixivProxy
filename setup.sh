@@ -2,7 +2,7 @@
 #Run this script on VPS
 
 echo -e "\033[33m Pixiv Proxy\n \033[0m"
-echo -e "\033[36m Github: https://github.com/Creeper2077/pixiv-proxy-cn \033[0m"
+echo -e "\033[36m Github: https://github.com/Creeper2077/pixiv-proxy \033[0m"
 echo -e "\033[33m Please abide by the use agreement of relevant service providers !\033[0m"
 echo -e "\n===============================\n"
 echo "Start install."
