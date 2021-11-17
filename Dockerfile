@@ -18,9 +18,9 @@ RUN echo -e "\033[33m Pixiv Proxy\n \033[0m" \
     && echo "Add user www..." \
     && groupadd -r www \
     && useradd -r -g www www \
-    && echo "Done." \
-COPY ./*.conf /home
-COPY ./scripts/*.sh /home/scripts
+    && echo "Done."
+COPY ./*.conf /home/
+COPY ./scripts/*.sh /home/scripts/
 RUN echo "Run final processing..." \
     && chmod -R +x /home/scripts \
     && apt clean -qq > /dev/null \
