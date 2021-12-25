@@ -1,0 +1,27 @@
+#设置模板
+#填写后将文件重命名为_config
+#注意:0为true,1为false
+
+
+#用于反代 *.pixiv.net 和 *.pximg.net 的域名
+pixivDomain='example.com'
+pximgDomain='pximg.example.com'
+
+#HTTP设置
+#是否启用HTTPS
+enableHttps=0
+#HTTP端口
+httpPort=80
+#HTTPS端口
+httpsPort=443
+
+#IP屏蔽
+enableGeoIP=1
+geoIPKey='XXXXXXXXXXXXXXX'
+
+#ACME设置
+email='postmaster@example.cn'
+#API授权设置
+#详见https://github.com/acmesh-official/acme.sh/wiki/dnsapi
+dns='dns_dp'
+dnsExport='YOUR_BASE64_HERE=='
