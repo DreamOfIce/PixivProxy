@@ -9,12 +9,12 @@ echo -e "\n===============================\n"
 echo "设置脚本权限..."
 chmod -R +x ./scripts
 echo "完成."
-apt update >/dev/null
+apt update
 echo "安装nginx..."
 apt install -y nginx libnginx-mod-http-subs-filter curl
 echo "完成."
 echo "复制nginx.conf"
-if [ -e /etc/nginx/nginx.conf && $IN_DOCKER != 'true' ]; then
+if [ -e /etc/nginx/nginx.conf ]; then
     read -n1 -p '检测到nginx.conf,是否覆盖?[y/N]' cover
     if [ "${cover,,}" == 'y' ]; then
         cp -f nginx.conf /etc/nginx/nginx.conf

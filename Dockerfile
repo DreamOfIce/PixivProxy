@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 WORKDIR /home
 COPY ./ /home/
-ENV IN_DOCKER 'true'
+ARG IN_DOCKER='true'
 RUN echo "开始构建镜像..." \
     && chmod +x /home/setup.sh \
     && /home/setup.sh \
