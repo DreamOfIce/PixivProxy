@@ -1,0 +1,28 @@
+{
+  "name": "pixivproxy",
+  "version": "1.0.0",
+  "description": "简单优雅の白嫖P站代理",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DreamOfIce/PixivProxy.git"
+  },
+  "keywords": [
+    "proxy",
+    "pixiv"
+  ],
+  "author": "冰雪殇璃陌梦",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DreamOfIce/PixivProxy/issues"
+  },
+  "homepage": "https://github.com/DreamOfIce/PixivProxy#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "harmon": "^1.4.4",
+    "http-proxy-middleware": "^2.0.4"
+  }
+}
